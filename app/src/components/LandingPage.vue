@@ -10,7 +10,7 @@
       <div class="banner"><img src="https://dfds-ti-conf-data.s3.eu-central-1.amazonaws.com/tech-moves-us.jpg" /></div>
 
       <div class="text">
-        <h1>Welcome wee</h1>
+        <h1>Welcome</h1>
 
 <p>Dear colleague
 
@@ -53,7 +53,7 @@ export default {
     return {}
   },
   methods: {
-    redirectUrl(url : String) {
+    redirectUrl(url : string) {
       window.location.href=url;
     }
   },
