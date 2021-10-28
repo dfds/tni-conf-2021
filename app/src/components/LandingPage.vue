@@ -2,15 +2,15 @@
   <div class="landingPage">
     <div class="content">
       <div class="menu">
-        <button v-on:click="$emit('swapcomponent', 'ConfViewer')" class="btn light-green">Schedule</button>        
-        <button class="btn light-green">Detailed program</button>
-        <button class="btn light-green">Seating overview</button>
+        <button v-on:click="$emit('swapcomponent', 'ConfViewer')" class="btn light-green">Day 2 Sessions</button>        
+        <button v-on:click="redirectUrl('https://tniconf.dfds.cloud/assets/tniconference-2021-full-program.pdf')" class="btn light-green">Detailed program PDF</button>
+        <button v-on:click="redirectUrl('https://tniconf.dfds.cloud/assets/tniconference-seating-dinner-day-2.pdf')" class="btn light-green">Seating overview PDF</button>
       </div>
 
       <div class="banner"><img src="https://dfds-ti-conf-data.s3.eu-central-1.amazonaws.com/tech-moves-us.jpg" /></div>
 
       <div class="text">
-        <h1>Welcome</h1>
+        <h1>Welcome wee</h1>
 
 <p>Dear colleague
 
@@ -53,6 +53,9 @@ export default {
     return {}
   },
   methods: {
+    redirectUrl(url : String) {
+      window.location.href=url;
+    }
   },
   computed: {
   },

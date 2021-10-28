@@ -17,10 +17,21 @@ if (process.env.NODE_ENV === 'production') {
       console.log('Content has been cached for offline use.')
     },
     updatefound () {
+      caches.keys().then(cacheNames => {
+        cacheNames.forEach(cacheName => {
+          caches.delete(cacheName);
+        });
+      });      
       console.log('New content is downloading.')
     },
     updated () {
       console.log('New content is available; please refresh.')
+      // caches.keys().then(function(names) {
+      //   for (let name of names) caches.delete(name);
+      // });
+      setTimeout(() => {
+        window.location.reload(true);
+      }, 1000)
     },
     offline () {
       console.log('No internet connection found. App is running in offline mode.')
@@ -29,4 +40,5 @@ if (process.env.NODE_ENV === 'production') {
       console.error('Error during service worker registration:', error)
     }
   })
+
 }
