@@ -41,7 +41,7 @@
   <h2 class="time-slot" style="grid-row: time-1700;">17:00</h2>
   <h2 class="time-slot" style="grid-row: time-1715;">17:15</h2>
   
-  <div v-for="event in schedule" :key="event.name + event.track" :class="['session', 'session-' + Math.floor(Math.random() * 100) + 1, 'track-' + event.track]" :style="{gridColumn: 'track-' + event.track, gridRow: 'time-' + getTimeStart(event.time) + ' / time-' + getTimeEnd(event.time)}">
+  <div v-for="event in events" :key="event.name + event.track" :class="['session', 'session-' + Math.floor(Math.random() * 100) + 1, 'track-' + event.track]" :style="{gridColumn: 'track-' + event.track, gridRow: 'time-' + getTimeStart(event.time) + ' / time-' + getTimeEnd(event.time)}">
     <h3 class="session-title"><a href="#">{{ event.name }}</a></h3>
     <div style="margin-top: 1px;"></div>
     <span class="session-time">{{ event.time }}</span>
@@ -68,7 +68,8 @@ export default {
   },
   data() {
     return {
-      schedule: []
+      schedule: [],
+      timer: ''
     }
   },
   methods: {
@@ -90,7 +91,7 @@ export default {
         events : new Map()
       };
 
-      (this as any).schedule.forEach((evt : any) => {
+      (this as any).events.forEach((evt : any) => {
         if (!payload.events.has(evt.day)) {
           payload.events.set(evt.day, []);
         }
@@ -102,11 +103,11 @@ export default {
     }
   },
   mounted: function() {
-    fetch("https://dfds-ti-conf-data.s3.eu-central-1.amazonaws.com/schedule.json")
-      .then(resp => resp.json())
-      .then(data => {
-        (this as any).schedule = data;
-      });
+    // fetch("https://dfds-ti-conf-data.s3.eu-central-1.amazonaws.com/schedule.json")
+    //   .then(resp => resp.json())
+    //   .then(data => {
+    //     (this as any).schedule = data;
+    //   });
   }
 }
 </script>

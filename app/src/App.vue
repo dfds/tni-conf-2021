@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1 style="font-size: 3em; text-align: center;">T&I conf 2021</h1>
-    <div :is="currentComponent" v-on:swapcomponent="swapComponent" :currentcomponentpayload="currentComponentPayload"></div>
+    <div :is="currentComponent" v-on:swapcomponent="swapComponent" :currentcomponentpayload="currentComponentPayload" :events="schedule"></div>
     <!-- <ConfViewer :events="events" /> -->
   </div>
 </template>
@@ -21,7 +21,9 @@ export default {
   data() {
     return {
       currentComponent: "LandingPage",
-      currentComponentPayload: {}
+      currentComponentPayload: {},
+      timer: '',
+      schedule: []
     }
   },
   methods: {
@@ -31,8 +33,26 @@ export default {
       }
 
       this.currentComponent = component;
-    }
-  }
+    },
+    fetchEventsList () {
+      fetch("https://dfds-ti-conf-data.s3.eu-central-1.amazonaws.com/schedule.json")
+        .then(resp => resp.json())
+        .then(data => {
+          this.schedule = data;
+        });
+    },
+    cancelAutoUpdate () {
+        clearInterval(this.timer);
+    }        
+  },
+  
+  created: function() {
+    this.fetchEventsList();
+    this.timer = setInterval(this.fetchEventsList, 40000);
+  },
+  beforeDestroy: function() {
+    this.cancelAutoUpdate();
+  }  
 }
 </script>
 
