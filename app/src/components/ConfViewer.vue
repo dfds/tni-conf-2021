@@ -27,7 +27,6 @@
         <span class="track-slot track-7" aria-hidden="true" style="grid-column: track-7; grid-row: tracks;">{{convertTrackToName(7)}}</span>  
       </div>
 
-      <h2 class="time-slot" style="grid-row: time-0800;">8:00</h2>
       <h2 class="time-slot" style="grid-row: time-0915;">9:15</h2>
       <h2 class="time-slot" style="grid-row: time-1000;">10:00</h2>
       <h2 class="time-slot" style="grid-row: time-1015;">10:15</h2>
@@ -187,11 +186,6 @@ export default {
     grid-gap: 1em;
     grid-template-rows:
       [tracks] auto
-      [time-0800] auto
-      [time-0815] auto
-      [time-0830] auto
-      [time-0845] auto
-      [time-0900] auto
       [time-0915] auto
       [time-0930] auto
       [time-0945] auto
