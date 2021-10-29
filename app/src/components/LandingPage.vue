@@ -62,6 +62,7 @@ export default {
   computed: {
   },
   mounted: function() {
+    document.title = "DFDS T&I conf 2021";
   }
 }
 </script>

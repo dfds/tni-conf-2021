@@ -1,6 +1,6 @@
 module.exports = {
   pwa: {
-    name: "T&I Conf 2021",
+    name: "DFDS T&I conf 2021",
     themeColor: "#002b45",
     workboxOptions: {
 //      skipWaiting: true,

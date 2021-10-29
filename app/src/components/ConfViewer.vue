@@ -9,22 +9,22 @@
 
     <div class="schedule" aria-labelledby="schedule-heading">
       
-      <span class="track-slot track-1" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">Track 1</span>
-      <span class="track-slot track-2" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">Track 2</span>
-      <span class="track-slot track-3" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">Track 3</span>
-      <span class="track-slot track-4" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">Track 4</span>
-      <span class="track-slot track-5" aria-hidden="true" style="grid-column: track-5; grid-row: tracks;">Track 5</span>
-      <span class="track-slot track-6" aria-hidden="true" style="grid-column: track-6; grid-row: tracks;">Track 6</span>
-      <span class="track-slot track-7" aria-hidden="true" style="grid-column: track-7; grid-row: tracks;">Track 7</span>
+      <span class="track-slot track-1" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">{{convertTrackToName(1)}}</span>
+      <span class="track-slot track-2" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">{{convertTrackToName(2)}}</span>
+      <span class="track-slot track-3" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">{{convertTrackToName(3)}}</span>
+      <span class="track-slot track-4" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">{{convertTrackToName(4)}}</span>
+      <span class="track-slot track-5" aria-hidden="true" style="grid-column: track-5; grid-row: tracks;">{{convertTrackToName(5)}}</span>
+      <span class="track-slot track-6" aria-hidden="true" style="grid-column: track-6; grid-row: tracks;">{{convertTrackToName(6)}}</span>
+      <span class="track-slot track-7" aria-hidden="true" style="grid-column: track-7; grid-row: tracks;">{{convertTrackToName(7)}}</span>
 
       <div class="tracks">
-        <span class="track-slot track-1" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">Track 1</span>
-        <span class="track-slot track-2" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">Track 2</span>
-        <span class="track-slot track-3" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">Track 3</span>
-        <span class="track-slot track-4" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">Track 4</span>
-        <span class="track-slot track-5" aria-hidden="true" style="grid-column: track-5; grid-row: tracks;">Track 5</span>
-        <span class="track-slot track-6" aria-hidden="true" style="grid-column: track-6; grid-row: tracks;">Track 6</span>
-        <span class="track-slot track-7" aria-hidden="true" style="grid-column: track-7; grid-row: tracks;">Track 7</span>  
+        <span class="track-slot track-1" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">{{convertTrackToName(1)}}</span>
+        <span class="track-slot track-2" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">{{convertTrackToName(2)}}</span>
+        <span class="track-slot track-3" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">{{convertTrackToName(3)}}</span>
+        <span class="track-slot track-4" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">{{convertTrackToName(4)}}</span>
+        <span class="track-slot track-5" aria-hidden="true" style="grid-column: track-5; grid-row: tracks;">{{convertTrackToName(5)}}</span>
+        <span class="track-slot track-6" aria-hidden="true" style="grid-column: track-6; grid-row: tracks;">{{convertTrackToName(6)}}</span>
+        <span class="track-slot track-7" aria-hidden="true" style="grid-column: track-7; grid-row: tracks;">{{convertTrackToName(7)}}</span>  
       </div>
 
       <h2 class="time-slot" style="grid-row: time-0800;">8:00</h2>
@@ -47,9 +47,11 @@
         <h3 class="session-title"><a href="#">{{ event.name }}</a></h3>
         <div style="margin-top: 1px;"></div>
         <span class="session-time">{{ event.time }}</span>
-        <span class="session-genre">Type: {{ event.genre }}</span>
         <div style="margin-top: 1px;"></div>
-        <span class="session-location">Location: {{ event.location }}</span>
+        <span v-if="showIfNotEmpty(event.theme)" class="session-location">Theme: {{ event.theme }}</span>   
+        <div style="margin-top: 1px;"></div>
+        <span  v-if="showIfNotEmpty(event.genre)" class="session-genre">Type: {{ event.genre }}</span>
+
         <div style="margin-top: 2px;"></div>
         <span class="session-presenter">{{ event.speaker }}</span>
         <div style="margin-top: 10px;"></div>
@@ -87,6 +89,42 @@ export default {
       let splitTimes = val.split("-");
       let splitHourMinutes = splitTimes[1].split(":");
       return splitHourMinutes[0] + splitHourMinutes[1];
+    },
+    showIfNotEmpty(val : string) : boolean {
+      if (val === undefined) {
+        return false;
+      }
+
+      if (val === "") {
+        return false;
+      }
+
+      return true;
+    },
+    convertTrackToName(val : number) : any {
+      switch (val) {
+        case 1: {
+          return "Columbus";
+        }
+        case 2: {
+          return "Auditorium 1";
+        }
+        case 3: {
+          return "Auditorium 2";
+        }
+        case 4: {
+          return "105";
+        }
+        case 5: {
+          return "107+108";
+        }
+        case 6: {
+          return "101";
+        }
+        case 7: {
+          return "106";
+        }
+      }
     }
   },
   computed: {
@@ -107,6 +145,7 @@ export default {
     }
   },
   mounted: function() {
+    document.title = "DFDS T&I conf 2021 - Schedule";
     // fetch("https://dfds-ti-conf-data.s3.eu-central-1.amazonaws.com/schedule.json")
     //   .then(resp => resp.json())
     //   .then(data => {
@@ -230,8 +269,10 @@ export default {
 
   .track-slot {
     display: flex;
-    flex: 0 1 30%;
+    flex: 0 1 40%;
     justify-content: center;
+    text-align: center;
+    align-items: center;
     margin: 2px 5px 5px 5px
   }
 }
@@ -240,10 +281,15 @@ export default {
   @media screen and (min-width:700px) {
     .time-slot {
       display: flex;
+      justify-content: center;
+      width: 80px;
     }
 
     .tracks {
       display: none;
+
+      .track-slot {
+      }
     }
 
     .session-title,
