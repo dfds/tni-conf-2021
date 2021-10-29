@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1 style="font-size: 3em; text-align: center;">DFDS T&I conf 2021</h1>
+    <h1 style="font-size: 3em; text-align: center;">DFDS T&I Conference 2021</h1>
     <div :is="currentComponent" v-on:swapcomponent="swapComponent" :currentcomponentpayload="currentComponentPayload" :events="schedule"></div>
     <!-- <ConfViewer :events="events" /> -->
   </div>
