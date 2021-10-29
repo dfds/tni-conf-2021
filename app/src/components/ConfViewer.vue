@@ -28,20 +28,20 @@
       </div>
 
       <h2 class="time-slot" style="grid-row: time-0800;">8:00</h2>
-      <h2 class="time-slot" style="grid-row: time-0900;">9:00</h2>
-      <h2 class="time-slot" style="grid-row: time-0945;">9:45</h2>
+      <h2 class="time-slot" style="grid-row: time-0915;">9:15</h2>
       <h2 class="time-slot" style="grid-row: time-1000;">10:00</h2>
-      <h2 class="time-slot" style="grid-row: time-1045;">10:45</h2>
+      <h2 class="time-slot" style="grid-row: time-1015;">10:15</h2>
       <h2 class="time-slot" style="grid-row: time-1100;">11:00</h2>
-      <h2 class="time-slot" style="grid-row: time-1145;">11:45</h2>
+      <h2 class="time-slot" style="grid-row: time-1115;">11:15</h2>
+      <h2 class="time-slot" style="grid-row: time-1200;">12:00</h2>
       <h2 class="time-slot" style="grid-row: time-1330;">13:30</h2>
       <h2 class="time-slot" style="grid-row: time-1415;">14:15</h2>
       <h2 class="time-slot" style="grid-row: time-1430;">14:30</h2>
       <h2 class="time-slot" style="grid-row: time-1515;">15:15</h2>
       <h2 class="time-slot" style="grid-row: time-1530;">15:30</h2>
       <h2 class="time-slot" style="grid-row: time-1615;">16:15</h2>
+      <h2 class="time-slot" style="grid-row: time-1630;">16:30</h2>
       <h2 class="time-slot" style="grid-row: time-1700;">17:00</h2>
-      <h2 class="time-slot" style="grid-row: time-1715;">17:15</h2>
       
       <div v-for="event in eventStructure.events.get(day)" :key="event.name + event.track" :class="['session', 'session-' + Math.floor(Math.random() * 100) + 1, 'track-' + event.track]" :style="{gridColumn: 'track-' + event.track, gridRow: 'time-' + getTimeStart(event.time) + ' / time-' + getTimeEnd(event.time)}">
         <h3 class="session-title"><a href="#">{{ event.name }}</a></h3>
