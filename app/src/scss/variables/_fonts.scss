@@ -1,5 +1,11 @@
+@font-face {
+font-family: 'DFDS-Regular';
+font-display: swap;
+src: url(https://unpkg.com/@dfds-ui/fonts@0.0.42/fonts/DFDS-Regular.woff2) format('woff2'), url(https://unpkg.com/@dfds-ui/fonts@0.0.42/fonts/DFDS-Regular.woff) format('woff');
+}
+
 // Typefaces
-$arial: 'Arial', sans-serif;
+$dfds: 'DFDS-Regular', 'Arial', sans-serif;
 
 // text sizes
 $text-x-large: 3.4rem;
@@ -9,6 +15,6 @@ $text-small: 1.8rem;
 $text-x-small: 1.5rem;
 
 // Global
-$primary-font: $arial;
-$primary-font-color: #ffffff;
-$primary-link-color: #f0e54c;
+$primary-font: $dfds;
+$primary-font-color: rgba(255,255,255,0.8);
+$primary-link-color: rgba(255,255,255,1);
