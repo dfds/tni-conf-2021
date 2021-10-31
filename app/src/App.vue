@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1 style="font-size: 3em; text-align: center;">DFDS T&I Conference 2021</h1>
+    <h1>DFDS T&I Conference 2021</h1>
     <div :is="currentComponent" v-on:swapcomponent="swapComponent" :currentcomponentpayload="currentComponentPayload" :events="schedule"></div>
     <!-- <ConfViewer :events="events" /> -->
   </div>
@@ -59,26 +59,56 @@ export default {
 <style lang="scss">
   @import '@/scss/base.scss';
 
-  body {
-    background-color: rgb(0, 43, 69);
-    font-family: 'Open Sans';
-  }
-  
-  #app {
-    color: rgba(255,255,255,0.8);
+  .content, .events {
+    margin: 0 auto;
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 768px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+
+      @media screen and (min-width:768px) {
+        margin-bottom: 32px;
+      }
+    }
+
+    .banner {
+      max-width: 1024px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+
+      @media screen and (min-width:768px) {
+        margin-bottom: 32px;
+      }
+    }
+
+    .text {
+      max-width: 768px;
+      margin: 0 auto;
+
+      p {
+        margin-bottom: 12px;
+      }
+    }
   }
 
-.btn {
+  h1 {
+    margin-bottom: 32px;
+  }
+
+  .btn {
+    width: 100%;
     background:transparent;
     border: 2px solid transparent;
     box-sizing: border-box;
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: 700;
     line-height: 1;
-    margin: 18px;
+    margin: 0 0 10px;
     padding: 15px 25px;
-    height: 40px;
+    font-size: 1.8rem;
     text-align: center;
     text-decoration: none;
     display:flex;
@@ -90,111 +120,116 @@ export default {
     -moz-transition: all 0.2s ease-in-out 0s;
     -ms-transition: all 0.2s ease-in-out 0s;
      transition: all 0.2s ease-in-out 0s;
-}
 
-.green:hover{
+    @media screen and (min-width:768px) {
+      width: auto;
+      margin: 0 10px;
+    }
+  }
+
+  .green:hover{
     background:#13d7ae;
-}
-.green:active, .green:focus{
+  }
+  .green:active, .green:focus{
     background:#0fae8d;
-}
-.light-green{
+  }
+  .light-green{
     background:#87bc58;
     color:#fff;
     box-shadow: 0 3px 0 #6ea140;    
-}
-.light-green:hover{
+  }
+  .light-green:hover{
     background:#c0da82;    
-}
-.light-green:active, .light-green:focus{
+  }
+  .light-green:active, .light-green:focus{
     background:#7fb84d;    
-}
-.orange{
+  }
+  .orange{
     background:#e77e22;
     color:#fff;
     box-shadow: 0 3px 0 #c16515;
-}
-.orange:hover{
+  }
+  .orange:hover{
     background:#f6b417;    
-}
-.orange:active, .orange:focus{
+  }
+  .orange:active, .orange:focus{
     background:#dd7418;    
-}
-.blue{
+  }
+  .blue{
     background:#3cbce1;
     color:#fff;
     box-shadow: 0 3px 0 #1fa4cb;
-}
-.blue:hover{
+  }
+  .blue:hover{
     background:#56d7ed;    
-}
-.blue:active, .blue:focus{
+  }
+  .blue:active, .blue:focus{
     background:#2fb7df;    
-}
-.purple{
+  }
+  .purple{
     background:#9a59b5;
     color:#fff;
     box-shadow: 0 3px 0 #7f4497;
-}
-.purple:hover{
+  }
+  .purple:hover{
     background:#c472e6;    
-}
-.purple:active, .purple:focus{
+  }
+  .purple:active, .purple:focus{
     background:#944fb0;    
-}
-.yellow{
+  }
+  .yellow{
     background:#fac75a;
     color:#fff;
     box-shadow: 0 3px 0 #f9b629;
-}
-.yellow:hover{
+  }
+  .yellow:hover{
     background:#fce17a;    
-}
-.yellow:active, .yellow:focus{
+  }
+  .yellow:active, .yellow:focus{
     background:#fac24b;    
-}
-.grey{
+  }
+  .grey{
     background:#4c4c4c;
     color:#fff;
     box-shadow: 0 3px 0 #333333;
-}
-.grey:hover{
+  }
+  .grey:hover{
     background:#747373;    
-}
-.grey:active, .grey:focus{
+  }
+  .grey:active, .grey:focus{
     background:#444444;    
-}
-.red{
+  }
+  .red{
     background:#e84c3d;
     color:#fff;
     box-shadow: 0 3px 0 #d82a1a;
-}
-.red:hover{
+  }
+  .red:hover{
     background:#f57b8a;    
-}
-.red:active, .red:focus{
+  }
+  .red:active, .red:focus{
     background:#e63b2b;    
-}
-.dark-blue{
+  }
+  .dark-blue{
     background:#34495e;
     color:#fff;
     box-shadow: 0 3px 0 #22303d;
-}
-.dark-blue:hover{
+  }
+  .dark-blue:hover{
     background:#425c77;    
-}
-.dark-blue:active, .dark-blue:focus{
+  }
+  .dark-blue:active, .dark-blue:focus{
     background:#2f4154;    
-}
-.ash-grey{
+  }
+  .ash-grey{
     background:#bec3c7;
     color:#fff;
     box-shadow: 0 3px 0 #a3aaaf;
-}
-.ash-grey:hover{
+  }
+  .ash-grey:hover{
     background:#d0d5d9;    
-}
-.ash-grey:active, .ash-grey:focus{
+  }
+  .ash-grey:active, .ash-grey:focus{
     background:#b0b6bb;    
-}  
+  }  
 </style>
