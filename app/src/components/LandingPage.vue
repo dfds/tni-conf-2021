@@ -44,3 +44,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+
+button {
+  font-family: 'DFDS-Regular', 'Arial', sans-serif;
+}
+
+</style>
