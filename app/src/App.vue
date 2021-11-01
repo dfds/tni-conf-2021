@@ -28,8 +28,13 @@ export default {
   },
   methods: {
     swapComponent: function(component, payload) {
+      const el = document.body;
+
       if (component.valueOf() === "ConfViewer") {
         this.currentComponentPayload = this.events;
+        el.classList.add('conference');
+      } else {
+        el.className = '';
       }
 
       this.currentComponent = component;
