@@ -7,14 +7,12 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import ConfViewer from './components/ConfViewer.vue';
 import LandingPage from './components/LandingPage.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
     ConfViewer,
     LandingPage
   },
