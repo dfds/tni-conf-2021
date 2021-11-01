@@ -3,7 +3,7 @@
     <div class="menu">
       <button v-on:click="$emit('swapcomponent', 'ConfViewer')" class="btn light-green">Day 2 Sessions</button>        
       <a href="https://tniconf.dfds.cloud/assets/tniconference-2021-full-program.pdf" class="btn light-green" target="_blank">Detailed program PDF</a>
-      <a href="https://tniconf.dfds.cloud/assets/tniconference-seating-dinner-day-2.pdf" class="btn light-green" target="_blank">Seating overview PDF</a>
+      <a href="https://tniconf.dfds.cloud/assets/tniconference-seating-dinner-day-2.pdf" class="btn light-green" target="_blank">Day 2 Dinner Seating PDF</a>
     </div>
     <div class="banner"><img src="https://dfds-ti-conf-data.s3.eu-central-1.amazonaws.com/tech-moves-us.jpg" /></div>
     <div class="text">
