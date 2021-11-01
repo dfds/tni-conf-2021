@@ -1,66 +1,59 @@
 <template>
   <div class="events">
-    <button style="width: 170px;" class="btn light-green" v-on:click="$emit('swapcomponent', 'LandingPage')">Landing page</button>
+    <div class="menu">
+      <button class="btn light-green" v-on:click="$emit('swapcomponent', 'LandingPage')">Introduction</button>
+    </div>
 
     <div v-for="day in Array.from(this.eventStructure.events.keys())" :key="day">
       <div class="day">
-        <span style="font-size: 2.4em;">Day {{ day }}</span>
-      </div>      
-
-    <div class="schedule" aria-labelledby="schedule-heading">
-      
-      <span class="track-slot track-1" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">{{convertTrackToName(1)}}</span>
-      <span class="track-slot track-2" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">{{convertTrackToName(2)}}</span>
-      <span class="track-slot track-3" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">{{convertTrackToName(3)}}</span>
-      <span class="track-slot track-4" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">{{convertTrackToName(4)}}</span>
-      <span class="track-slot track-5" aria-hidden="true" style="grid-column: track-5; grid-row: tracks;">{{convertTrackToName(5)}}</span>
-      <span class="track-slot track-6" aria-hidden="true" style="grid-column: track-6; grid-row: tracks;">{{convertTrackToName(6)}}</span>
-      <span class="track-slot track-7" aria-hidden="true" style="grid-column: track-7; grid-row: tracks;">{{convertTrackToName(7)}}</span>
-
-      <div class="tracks">
+        <h2>Day {{ day }}</h2>
+      </div>
+      <div class="schedule" aria-labelledby="schedule-heading">
         <span class="track-slot track-1" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">{{convertTrackToName(1)}}</span>
         <span class="track-slot track-2" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">{{convertTrackToName(2)}}</span>
         <span class="track-slot track-3" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">{{convertTrackToName(3)}}</span>
         <span class="track-slot track-4" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">{{convertTrackToName(4)}}</span>
         <span class="track-slot track-5" aria-hidden="true" style="grid-column: track-5; grid-row: tracks;">{{convertTrackToName(5)}}</span>
         <span class="track-slot track-6" aria-hidden="true" style="grid-column: track-6; grid-row: tracks;">{{convertTrackToName(6)}}</span>
-        <span class="track-slot track-7" aria-hidden="true" style="grid-column: track-7; grid-row: tracks;">{{convertTrackToName(7)}}</span>  
+        <span class="track-slot track-7" aria-hidden="true" style="grid-column: track-7; grid-row: tracks;">{{convertTrackToName(7)}}</span>
+        <div class="tracks">
+          <span class="track-slot track-1" aria-hidden="true" style="grid-column: track-1; grid-row: tracks;">{{convertTrackToName(1)}}</span>
+          <span class="track-slot track-2" aria-hidden="true" style="grid-column: track-2; grid-row: tracks;">{{convertTrackToName(2)}}</span>
+          <span class="track-slot track-3" aria-hidden="true" style="grid-column: track-3; grid-row: tracks;">{{convertTrackToName(3)}}</span>
+          <span class="track-slot track-4" aria-hidden="true" style="grid-column: track-4; grid-row: tracks;">{{convertTrackToName(4)}}</span>
+          <span class="track-slot track-5" aria-hidden="true" style="grid-column: track-5; grid-row: tracks;">{{convertTrackToName(5)}}</span>
+          <span class="track-slot track-6" aria-hidden="true" style="grid-column: track-6; grid-row: tracks;">{{convertTrackToName(6)}}</span>
+          <span class="track-slot track-7" aria-hidden="true" style="grid-column: track-7; grid-row: tracks;">{{convertTrackToName(7)}}</span>  
+        </div>
+        <h2 class="time-slot" style="grid-row: time-0915;">9:15</h2>
+        <h2 class="time-slot" style="grid-row: time-1000;">10:00</h2>
+        <h2 class="time-slot" style="grid-row: time-1015;">10:15</h2>
+        <h2 class="time-slot" style="grid-row: time-1100;">11:00</h2>
+        <h2 class="time-slot" style="grid-row: time-1115;">11:15</h2>
+        <h2 class="time-slot" style="grid-row: time-1200;">12:00</h2>
+        <h2 class="time-slot" style="grid-row: time-1330;">13:30</h2>
+        <h2 class="time-slot" style="grid-row: time-1415;">14:15</h2>
+        <h2 class="time-slot" style="grid-row: time-1430;">14:30</h2>
+        <h2 class="time-slot" style="grid-row: time-1515;">15:15</h2>
+        <h2 class="time-slot" style="grid-row: time-1530;">15:30</h2>
+        <h2 class="time-slot" style="grid-row: time-1615;">16:15</h2>
+        <h2 class="time-slot" style="grid-row: time-1630;">16:30</h2>
+        <h2 class="time-slot" style="grid-row: time-1700;">17:00</h2>
+        <div v-for="event in eventStructure.events.get(day)" :key="event.name + event.track" :class="['session', 'session-' + Math.floor(Math.random() * 100) + 1, 'track-' + event.track]" :style="{gridColumn: 'track-' + event.track, gridRow: 'time-' + getTimeStart(event.time) + ' / time-' + getTimeEnd(event.time)}">
+          <h3 class="session-title"><a href="#">{{ event.name }}</a></h3>
+          <div style="margin-top: 1px;"></div>
+          <span class="session-time">{{ event.time }}</span>
+          <div style="margin-top: 1px;"></div>
+          <span v-if="showIfNotEmpty(event.theme)" class="session-location">Theme: {{ event.theme }}</span>   
+          <div style="margin-top: 1px;"></div>
+          <span  v-if="showIfNotEmpty(event.genre)" class="session-genre">Type: {{ event.genre }}</span>
+          <div style="margin-top: 2px;"></div>
+          <span class="session-presenter">{{ event.speaker }}</span>
+          <div style="margin-top: 10px;"></div>
+          <span class="session-description">{{ event.description }}</span>
+        </div>
       </div>
-
-      <h2 class="time-slot" style="grid-row: time-0915;">9:15</h2>
-      <h2 class="time-slot" style="grid-row: time-1000;">10:00</h2>
-      <h2 class="time-slot" style="grid-row: time-1015;">10:15</h2>
-      <h2 class="time-slot" style="grid-row: time-1100;">11:00</h2>
-      <h2 class="time-slot" style="grid-row: time-1115;">11:15</h2>
-      <h2 class="time-slot" style="grid-row: time-1200;">12:00</h2>
-      <h2 class="time-slot" style="grid-row: time-1330;">13:30</h2>
-      <h2 class="time-slot" style="grid-row: time-1415;">14:15</h2>
-      <h2 class="time-slot" style="grid-row: time-1430;">14:30</h2>
-      <h2 class="time-slot" style="grid-row: time-1515;">15:15</h2>
-      <h2 class="time-slot" style="grid-row: time-1530;">15:30</h2>
-      <h2 class="time-slot" style="grid-row: time-1615;">16:15</h2>
-      <h2 class="time-slot" style="grid-row: time-1630;">16:30</h2>
-      <h2 class="time-slot" style="grid-row: time-1700;">17:00</h2>
-      
-      <div v-for="event in eventStructure.events.get(day)" :key="event.name + event.track" :class="['session', 'session-' + Math.floor(Math.random() * 100) + 1, 'track-' + event.track]" :style="{gridColumn: 'track-' + event.track, gridRow: 'time-' + getTimeStart(event.time) + ' / time-' + getTimeEnd(event.time)}">
-        <h3 class="session-title"><a href="#">{{ event.name }}</a></h3>
-        <div style="margin-top: 1px;"></div>
-        <span class="session-time">{{ event.time }}</span>
-        <div style="margin-top: 1px;"></div>
-        <span v-if="showIfNotEmpty(event.theme)" class="session-location">Theme: {{ event.theme }}</span>   
-        <div style="margin-top: 1px;"></div>
-        <span  v-if="showIfNotEmpty(event.genre)" class="session-genre">Type: {{ event.genre }}</span>
-
-        <div style="margin-top: 2px;"></div>
-        <span class="session-presenter">{{ event.speaker }}</span>
-        <div style="margin-top: 10px;"></div>
-        <span class="session-description">{{ event.description }}</span>
-      </div>        
-
-    </div>          
-
     </div>
-    
   </div>
 </template>
 
@@ -164,18 +157,13 @@ export default {
   }
 
   .day {
-    margin: 10px 0px 10px 0px;
-    padding: 20px 0px 20px 0px;
+    margin: 10px -20px;
+    padding: 20px;
     background-color: rgb(5, 65, 102);
 
-    span {
-      margin-left: 10px;
-    }    
-  }
-
-  .events {
-    display: flex;
-    flex-direction: column;
+    @media screen and (min-width:768px) {
+      margin: 10px -32px;
+    }
   }
 
 // Custom
@@ -249,6 +237,7 @@ export default {
 .track-slot {
   display: none; /* hidden on small screens and browsers without grid support */
   color: rgb(48, 48, 48);
+  padding: 10px;
 }
 
 .session-description {
@@ -263,11 +252,11 @@ export default {
 
   .track-slot {
     display: flex;
-    flex: 0 1 40%;
+    width: 100%;
     justify-content: center;
     text-align: center;
     align-items: center;
-    margin: 2px 5px 5px 5px
+    margin: 0 0 10px;
   }
 }
 
@@ -281,9 +270,6 @@ export default {
 
     .tracks {
       display: none;
-
-      .track-slot {
-      }
     }
 
     .session-title,
@@ -296,7 +282,6 @@ export default {
 
     .track-slot {
       display: block;
-      padding: 10px 0px 5px 0px;
       position: sticky;
       width: 100%;
       top: 0;
@@ -368,6 +353,7 @@ export default {
   }
 }
 
+.day,
 .track-slot,
 .time-slot {
   font-weight: bold;
@@ -416,12 +402,6 @@ export default {
   background: #ccc;
   color: #000;
   box-shadow: none;
-}
-
-.text {
-  max-width: 750px;
-  font-size: 18px;
-  margin: 0 auto 50px;
 }
 
 .meta {
