@@ -46,7 +46,7 @@
           <div style="margin-top: 1px;"></div>
           <span v-if="showIfNotEmpty(event.theme)" class="session-location">Theme: {{ event.theme }}</span>   
           <div style="margin-top: 1px;"></div>
-          <span  v-if="showIfNotEmpty(event.genre)" class="session-genre">Type: {{ event.genre }}</span>
+          <span v-if="showIfNotEmpty(event.genre)" class="session-genre">Type: {{ event.genre }}</span>
           <div style="margin-top: 2px;"></div>
           <span class="session-presenter">{{ event.speaker }}</span>
           <div style="margin-top: 10px;"></div>
@@ -416,6 +416,4 @@ export default {
 hr {
   margin: 40px 0;
 }
-
-
 </style>

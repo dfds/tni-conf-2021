@@ -7,14 +7,12 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import ConfViewer from './components/ConfViewer.vue';
 import LandingPage from './components/LandingPage.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
     ConfViewer,
     LandingPage
   },
@@ -28,8 +26,13 @@ export default {
   },
   methods: {
     swapComponent: function(component, payload) {
+      const el = document.body;
+
       if (component.valueOf() === "ConfViewer") {
         this.currentComponentPayload = this.events;
+        el.classList.add('conference');
+      } else {
+        el.className = '';
       }
 
       this.currentComponent = component;
