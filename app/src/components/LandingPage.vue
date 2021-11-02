@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div class="menu">
-      <button v-on:click="$emit('swapcomponent', 'ConfViewer')" class="btn light-green">Day 2 Sessions</button>        
+      <button v-on:click="$emit('swapcomponent', 'ConfViewer')" class="btn light-green">Sessions</button>        
       <a href="https://tniconf.dfds.cloud/assets/tniconference-2021-full-program.pdf" class="btn light-green" target="_blank">Detailed program PDF</a>
       <a href="https://tniconf.dfds.cloud/assets/tniconference-seating-dinner-day-2.pdf" class="btn light-green" target="_blank">Day 2 Dinner seating PDF</a>
     </div>
