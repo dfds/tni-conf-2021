@@ -8,6 +8,10 @@
     <div class="banner"><img src="https://dfds-ti-conf-data.s3.eu-central-1.amazonaws.com/tech-moves-us.jpg" /></div>
     <div class="text">
       <p>Dear colleague<br />Welcome to the TECH MOVES US T&I Conference. We hope you are enjoying the conference and invite you to study the conference program at the links above.</p>
+      <h2>Regarding LUNCH on Day 2</h2>
+      <p>
+        Sandwiches are available at the entrance to Columbus Club.
+      </p>
       <h2>Regarding dinner on Day 2</h2>
       <p>
         Day 2 is a formal dinner at 20.00 in Seven Seas. Please see seating assignments on the posters near the restaurant, or click the link to the seating plan PDF above.
